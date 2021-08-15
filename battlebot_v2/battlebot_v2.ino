@@ -90,34 +90,38 @@ void loop(){
 
     // Perform movements based on both analog sticks
      if(nJoyR>50) {
-//        digitalWrite(MOTORA_1,HIGH);
-//        digitalWrite(MOTORA_2,LOW);
-//        analogWrite(ENA, 1023);
-        Serial.println("Right stick is being held");
+        digitalWrite(MOTORA_1,LOW);
+        digitalWrite(MOTORA_2,HIGH);
+         analogWrite(ENA, 1023);
+        Serial.println("Right stick is down");
      }
-//     if(nJoyR<-50) {
-//        digitalWrite(MOTORA_1,LOW);
-//        digitalWrite(MOTORA_2,HIGH);
-//        analogWrite(ENA, 1023);
-//     }
-//     if (abs(nJoyR)<50) {
-//        analogWrite(ENA, 0);
-//     }
+     if(nJoyR<-50) {
+        digitalWrite(MOTORA_1,HIGH);
+        digitalWrite(MOTORA_2,LOW);
+        analogWrite(ENA, 1023);
+        Serial.println("Right stick is up");
+     }
+     if (abs(nJoyR)<50) {
+       analogWrite(ENA, 0);
+       Serial.println("Right stick is nothing");
+     }
      
      if(nJoyL>50) {
-//        digitalWrite(MOTORB_1,HIGH);
-//        digitalWrite(MOTORB_2,LOW);
-//        analogWrite(ENB, 1023);
-        Serial.println("Left stick is being held");
+       digitalWrite(MOTORB_1,HIGH);
+       digitalWrite(MOTORB_2,LOW);
+       analogWrite(ENB, 1023);
+        Serial.println("Left stick is up");
      }
-//     if(nJoyL<-50) {
-//        digitalWrite(MOTORB_1,LOW);
-//        digitalWrite(MOTORB_2,HIGH);
-//        analogWrite(ENB, 1023);
-//     }
-//     if (abs(nJoyL)<50) {
-//        analogWrite(ENB, 0);
-//     }     
+     if(nJoyL<-50) {
+       digitalWrite(MOTORB_1,LOW);
+       digitalWrite(MOTORB_2,HIGH);
+       analogWrite(ENB, 1023);
+        Serial.println("Left stick is down");
+     }
+     if (abs(nJoyL)<50) {
+       analogWrite(ENB, 0);
+       Serial.println("Left stick is nothing");
+     }     
 
 
      if(ps2x.Button(PSB_START))                   //will be TRUE as long as button is pressed
